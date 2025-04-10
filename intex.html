@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canary.uz</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; padding-bottom: 50px; }
+        header { background-color: #333; color: white; text-align: center; padding: 20px; }
+        nav { text-align: center; margin: 20px 0; }
+        nav a { text-decoration: none; color: #333; padding: 10px 20px; margin: 0 10px; background-color: #ddd; border-radius: 5px; }
+        nav a:hover { background-color: #bbb; }
+        footer { text-align: center; padding: 10px; background-color: #333; color: white; position: fixed; width: 100%; bottom: 0; left: 0; z-index: 1000; }
+        .content { padding: 20px; background-color: white; margin: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        #text-to-speech { padding: 10px 20px; background-color: #ff9800; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .content h2, .content p { margin-bottom: 20px; }
+        #text-input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd; }
+        select { padding: 10px; margin-top: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Canary.uz</h1>
+        <p>Kanareykalar va ularning parvarishi haqida ma'lumotlar</p>
+    </header>
+
+    <nav>
+        <a href="javascript:void(0)" onclick="showPage(0)">Bosh sahifa</a>
+        <a href="javascript:void(0)" onclick="showPage(1)">Biz haqimizda</a>
+        <a href="javascript:void(0)" onclick="showPage(2)">Aloqa</a>
+        <a href="javascript:void(0)" onclick="showPage(3)">Kanareyka haqida</a>
+    </nav>
+
+    <div id="pages">
+        <!-- Bosh sahifa -->
+        <div class="content page">
+            <h2>Salom!</h2>
+            <p>Canary.uz sayti qushlar parvarishi va kanareykalar haqida kerakli ma'lumotlarni taqdim etadi.</p>
+            <button id="text-to-speech" onclick="showInput()">Matnni ovozga aylantirish</button>
+            <div id="input-section" style="display: none;">
+                <input type="text" id="text-input" placeholder="Matnni kiriting..." oninput="checkInput()">
+                <select id="language-selector">
+                    <option value="uz-UZ">O‘zbekcha</option>
+                    <option value="ru-RU">Ruscha</option>
+                    <option value="en-US">Inglizcha</option>
+                    <option value="ar-AR">Arabcha</option>
+                </select>
+                <button onclick="speakText()">Ovozga aylantirish</button>
+            </div>
+        </div>
+
+        <!-- Biz haqimizda -->
+        <div class="content page" style="display:none;">
+            <h2>Biz haqimizda</h2>
+            <p>Canary.uz - kanareykalar haqida to‘liq ma'lumot beruvchi sayt. Bizning maqsadimiz kanareykalarni sevuvchilarga ularni to‘g‘ri parvarishlash bo‘yicha yordam berish, shuningdek, qushlar haqida umumiy ma'lumotlarni taqdim etishdir.</p>
+        </div>
+
+        <!-- Aloqa -->
+        <div class="content page" style="display:none;">
+            <h2>Aloqa</h2>
+            <p>Biz bilan bog‘lanish uchun:</p>
+            <p>Telefon: +998 90 123 45 67</p>
+            <p>Email: info@canary.uz</p>
+            <p>Manzil: Toshkent, O'zbekiston</p>
+        </div>
+
+        <!-- Kanareyka haqida -->
+        <div class="content page" style="display:none;">
+            <h2>Kanareyka (Canary) haqida</h2>
+            <p>Kanareykalar kichik, jonli va yoqimli ovozli qushlardir. Ular asosan Kanarey orollaridan kelgan va turli ranglarga ega bo‘lgan turlari mavjud. Kanareykalar o‘zining yoqimli ovozi va ranglari bilan mashhur.</p>
+
+            <ul>
+                <li><strong>Ranglari:</strong> Odatda sarg‘ish, yashil, qizil ranglar bo‘ladi.</li>
+                <li><strong>Ovoz:</strong> Kanareykalar o‘zining qo‘shiqlari bilan mashhur, bu ovozlar juda tinchlantiruvchi va yoqimli.</li>
+                <li><strong>Parvarish:</strong> Kanareykalarni parvarishlash uchun ular uchun toza va qulay joy zarur. Ularni oson parvarishlash mumkin.</li>
+            </ul>
+
+            <h3>Sarg‘ish Kanareyka</h3>
+            <p>Sarg‘ish kanareykalar o‘zining yorqin ranglari va nafis ovozlari bilan tanilgan. Ular ko‘pincha yengil parvarishlashni talab qiladi va mashhur uy qushlaridan biridir.</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Serinus_canaria_-Parque_Rural_del_Nublo%2C_Gran_Canaria%2C_Spain_-male-8a.jpg/960px-Serinus_canaria_-Parque_Rural_del_Nublo%2C_Gran_Canaria%2C_Spain_-male-8a.jpg" alt="Sarg‘ish Kanareyka" width="300" height="200">
+
+            <h3>Yashil Kanareyka</h3>
+            <p>Yashil kanareykalar tabiiy muhitda ko‘proq uchraydi. Ularning o‘zgacha ranglari va rang-barang bo‘lishi ularni ko‘plab qushlar sevikli qiladi.</p>
+            <img src="https://i.pinimg.com/474x/86/98/69/86986925a86e225107b4c48bc7b6d865.jpg" alt="Yashil Kanareyka" width="300" height="200">
+
+            <h3>Qizil Kanareyka</h3>
+            <p>Qizil kanareykalar juda jozibali bo‘lib, ularning ranglari hamma uchun ajablantiradi. Ushbu tur, ayniqsa, musiqaga qiziqqan qushlar orasida mashhur.</p>
+            <img src="https://lafeber.com/pet-birds/wp-content/uploads/2018/06/Red-Factor-Canary.jpg" alt="Qizil Kanareyka" width="300" height="200">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Canary.uz. Barcha huquqlar saqlangan.</p>
+    </footer>
+
+    <script>
+        function showPage(index) {
+            let pages = document.querySelectorAll('.page');
+            pages.forEach((page, i) => {
+                page.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function showInput() {
+            document.getElementById('input-section').style.display = 'block';
+            document.getElementById('text-input').focus(); // Inputga fokuslanadi
+        }
+
+        function speakText() {
+            let text = document.getElementById('text-input').value;
+            if (text.trim() !== "") {
+                let speech = new SpeechSynthesisUtterance(text);
+                let selectedLang = document.getElementById('language-selector').value; // Tilni tanlash
+                speech.lang = selectedLang; // Tanlangan tilga o'zgartirish
+                speech.rate = 1;  // Tezlikni sozlash
+                speech.pitch = 1;  // Tonni sozlash
+                window.speechSynthesis.speak(speech);
+            }
+        }
+
+        // Bu yerda oninput yordamida matnni tekshiramiz
+        function checkInput() {
+            let textInput = document.getElementById('text-input').value;
+            let button = document.querySelector("#text-input + button");
+            if (textInput.trim() !== "") {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+        }
+
+        // Dastlabki sahifani ko'rsatish
+        showPage(0);
+    </script>
+
+</body>
+</html>
